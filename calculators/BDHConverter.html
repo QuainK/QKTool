@@ -65,13 +65,16 @@
 	<div class="header">
 		<h1><a href="../index.html">QKTool</a></h1>
 		<h2>进制转换器 BDHConverter</h2>
-		<h4>版本号：1.0.0</h4>
+		<h4>版本号：1.1.0</h4>
 	</div>
 
 	<div class="content">
 		<form>
 			<span class="label">二进制&nbsp;B</span>
 			<input class="textbox" id="num_bin" type="number" placeholder="Binary" min="0" oninput="calculate(2)">
+			<br><br>
+			<span class="label">八进制&nbsp;O</span>
+			<input class="textbox" id="num_oct" type="number" placeholder="Octal" min="0" oninput="calculate(8)">
 			<br><br>
 			<span class="label">十进制&nbsp;D</span>
 			<input class="textbox" id="num_dec" type="number" placeholder="Decimal" min="0" oninput="calculate(10)">
@@ -86,6 +89,8 @@
 	<br>
 	<div class="footer">
 		<h3>更新日志</h3>
+		<h4>版本 1.1.0 日期时间 2019.03.22 05:30</h4>
+		<p>增加八进制换算功能</p>
 		<h4>版本 1.0.0 日期时间 2019.03.21 03:00</h4>
 		<p>完成二进制、十进制、十六进制互转功能</p>
 		<div class="footer-copyright"></div>
@@ -102,24 +107,95 @@
 	<script>
 		function calculate(num_type) {
 			bin = document.getElementById('num_bin');
+			oct = document.getElementById('num_oct');
 			dec = document.getElementById('num_dec');
 			hex = document.getElementById('num_hex');
 			switch (num_type) {
 				case 2:
+					bin_to_oct(); //二进制转八进制，取三合一
 					bin_to_dec(); //二进制转十进制，按2次幂的权展开累加
 					bin_to_hex(); //二进制转十六进制，取四合一
 					break;
+				case 8:
+					oct_to_bin(); //八进制转二进制，取一分三
+					oct_to_dec(); //八进制转十进制，取上文二进制结果，按2次幂的权展开累加
+					oct_to_hex(); //八进制转十六进制，取上文二进制结果，取四合一
+					break;
 				case 10:
 					dec_to_bin(); //十进制转二进制，短除法取余
+					dec_to_oct(); //十进制转八进制，取上文二进制结果，取三合一
 					dec_to_hex(); //十进制转十六进制，取上文二进制结果，取四合一
 					break;
 				case 16:
 					hex_to_bin(); //十六进制转二进制，取一分四
+					hex_to_oct(); //十六进制转八进制，取上文二进制结果，取三合一
 					hex_to_dec(); //十六进制转十进制，取上文二进制结果，按2幂权累加
 					break;
 				default:
 					break;
 			}
+		}
+
+		function bin_to_oct() {
+			var bin_str, //二进制字符串，直接来自于文本框
+				bin_len, //二进制字符串的长度
+				tmp_oct_str, //当前3位一组二进制的字符串
+				tmp_oct_str; //当前计算得出的八进制的字符串
+			var bin_arr = new Array(), //存放二进制的字符数组
+				tmp_bin_arr = new Array(), //存放当前3位一组二进制的数组
+				oct_arr = new Array(); //存放八进制的字符数组
+			bin_str = bin.value; //获取二进制字符串
+			bin_arr = bin_str.split(''); //字符串转换成字符数组
+			for (bin_len = 0; bin_arr[bin_len] != undefined; ++bin_len); //获取数组长度
+			// alert("bin_len"+bin_len);
+			for (var times = 0; times * 3 < bin_len; ++times) {
+				//3个一组，times第几次分组
+				var i = times * 3;
+				for (var j = 0; j < 3; ++j) {
+					var index = bin_len - 1 - i - j;
+					// alert("index"+index);
+					if (index >= 0 && index < bin_len) {
+						//如果长度达到3个，自然组成一组
+						tmp_bin_arr[j] = bin_arr[index];
+					} else {
+						//没有达到，这是二进制中空出来的高位，补0就行
+						tmp_bin_arr[j] = 0;
+					}
+				}
+				tmp_bin_str = tmp_bin_arr.reverse().join(''); //字符数组转换成字符串
+				switch (
+					tmp_bin_str //枚举式查找
+				) {
+					case '000':
+						tmp_oct_str = '0';
+						break;
+					case '001':
+						tmp_oct_str = '1';
+						break;
+					case '010':
+						tmp_oct_str = '2';
+						break;
+					case '011':
+						tmp_oct_str = '3';
+						break;
+					case '100':
+						tmp_oct_str = '4';
+						break;
+					case '101':
+						tmp_oct_str = '5';
+						break;
+					case '110':
+						tmp_oct_str = '6';
+						break;
+					case '111':
+						tmp_oct_str = '7';
+						break;
+					default:
+						break;
+				}
+				oct_arr[times] = tmp_oct_str;
+			}
+			oct.value = oct_arr.reverse().join(''); //输出八进制
 		}
 
 		function bin_to_dec() {
@@ -233,6 +309,57 @@
 			hex.value = hex_arr.reverse().join(''); //输出十六进制
 		}
 
+		function oct_to_bin() {
+			var oct_str, oct_len;
+			var oct_arr = new Array(),
+				bin_arr = new Array();
+			oct_str = oct.value;
+			oct_arr = oct_str.split(''); //字符串转换成字符数组
+			for (oct_len = 0; oct_arr[oct_len] != undefined; ++oct_len); //获取数组长度
+			for (var index = oct_len - 1; index >= 0; --index) {
+				switch (oct_arr[index]) {
+					case '0':
+						bin_arr[index] = '000';
+						break;
+					case '1':
+						bin_arr[index] = '001';
+						break;
+					case '2':
+						bin_arr[index] = '010';
+						break;
+					case '3':
+						bin_arr[index] = '011';
+						break;
+					case '4':
+						bin_arr[index] = '100';
+						break;
+					case '5':
+						bin_arr[index] = '101';
+						break;
+					case '6':
+						bin_arr[index] = '110';
+						break;
+					case '7':
+						bin_arr[index] = '111';
+						break;
+
+					default:
+						break;
+				}
+			}
+			bin.value = bin_arr.join(''); //输出二进制
+		}
+
+		function oct_to_dec() {
+			oct_str = oct.value;
+			bin_to_dec();
+		}
+
+		function oct_to_hex() {
+			oct_str = oct.value;
+			bin_to_hex();
+		}
+
 		function dec_to_bin() {
 			if (dec.value == '') {
 				bin.value = '';
@@ -270,6 +397,10 @@
 			}
 			result = array_result.join('');
 			bin.value = result;
+		}
+
+		function dec_to_oct() {
+			bin_to_oct();
 		}
 
 		function dec_to_hex() {
@@ -344,6 +475,10 @@
 				}
 			}
 			bin.value = bin_arr.join(''); //输出二进制
+		}
+
+		function hex_to_oct() {
+			bin_to_oct();
 		}
 
 		function hex_to_dec() {
