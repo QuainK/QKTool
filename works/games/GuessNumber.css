@@ -1,0 +1,21 @@
+.STYLE2 {
+  font-family: "楷体";
+  font-size: large;
+  font-style: normal;
+  line-height: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  color: #fff;
+}
+
+.STYLE3 {
+  font-family: "黑体";
+  font-size: large;
+  color: #333;
+}
+
+#usershu {
+  width: 30%;
+  height: 2em;
+}

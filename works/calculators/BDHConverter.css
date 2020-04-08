@@ -1,0 +1,56 @@
+body {
+  font-size: 1em;
+  text-align: center;
+}
+
+input {
+  color: #000;
+}
+
+/* 没有数字文本框的上下加减按钮 */
+/*Chrome*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/*FireFox*/
+input {
+  -moz-appearance: textfield;
+}
+
+label {
+  font-size: 1em;
+  display: inline-block;
+  width: 30%;
+}
+
+p {
+  font-size: 0.8em;
+}
+
+.text_box {
+  display: inline-block;
+  width: 65%;
+  padding: 0.5em 0;
+}
+
+#btn_reset {
+  text-align: center;
+  font-size: 1em;
+  padding: 0.5em 1em;
+  background-color: #ff9;
+  border: 2px solid #cc6;
+}
+
+#btn_reset:hover {
+  background-color: #ff6;
+  border: 2px solid #aa4;
+}
+
+#btn_reset:active {
+  background-color: #aa4;
+  border: 2px solid #882;
+}

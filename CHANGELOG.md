@@ -10,6 +10,8 @@
 
 - 首页文件名从home.html改为index.html
 
+- 修改子项目名称，CSS从HTML文件中独立出来
+
 ### 修复 Fixed
 
 ### 重构 Refactored
