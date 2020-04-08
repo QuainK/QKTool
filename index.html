@@ -4,14 +4,14 @@
 <head>
 	<meta charset="utf-8">
 	<meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
-	<link href="public/css/normalize.css" rel="stylesheet" type="text/css">
-	<link href="public/css/main.css" rel="stylesheet" type="text/css">
+	<link href="css/lib/normalize.css" rel="stylesheet" type="text/css">
+	<link href="css/main.css" rel="stylesheet" type="text/css">
 	<link href="favicon.ico" rel="icon" type="image/x-icon">
 	<title>QKTool</title>
 </head>
 
 <body>
-<script src="public/js/adjust_page_width.js"></script>
+<script src="js/adjust_page_width.js"></script>
 
 <div class="header">
 	<h1>QKTool</h1>
@@ -23,7 +23,7 @@
 		<li class="list-sublist">
 			<h2 class="list-classname">计算器</h2>
 			<ul>
-				<li class="list-item"><a href="calculators/BDHConverter.html">
+				<li class="list-item"><a href="works/calculators/BDHConverter.html">
 					<h3>进制转换器 BDHConverter</h3>
 				</a></li>
 			</ul>
@@ -31,7 +31,7 @@
 		<li class="list-sublist">
 			<h2 class="list-classname">小游戏</h2>
 			<ul>
-				<li class="list-item"><a href="games/caishu2016.html">
+				<li class="list-item"><a href="works/games/caishu2016.html">
 						<h3>猜数2016 caishu2016</h3>
 					</a></li>
 			</ul>
@@ -39,10 +39,10 @@
 		<li class="list-sublist">
 			<h2 class="list-classname">其他</h2>
 			<ul>
-				<li class="list-item"><a href="others/searchlist/searchlist.html">
+				<li class="list-item"><a href="works/searchlist/searchlist.html">
 						<h3>搜索引擎整合 So</h3>
 					</a></li>
-				<li class="list-item"><a href="others/hyacinth/index.html">
+				<li class="list-item"><a href="works/hyacinth/index.html">
 						<h3>风信子 Hyacinth</h3>
 					</a></li>
 			</ul>
@@ -54,11 +54,11 @@
 	<div class="footer-copyright"></div>
 </div>
 
-<script src="public/js/jquery-1.8.3.min.js"></script>
+<script src="js/lib/jquery-1.8.3.min.js"></script>
 <script>
 	$(function () {
 		$(document).ready(function () {
-			$('.footer').load('public/html/footer-copyright.html');
+			$('.footer').load('./html/footer-copyright.html');
 		})
 	});
 </script>

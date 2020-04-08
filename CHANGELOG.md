@@ -4,11 +4,17 @@
 
 ### 新增 Added
 
+- 添加项目git忽略.gitignore、项目文档、更新日志以及代码风格配置.editorconfig
+
 ### 改动 Changed
+
+- 首页文件名从home.html改为index.html
 
 ### 修复 Fixed
 
 ### 重构 Refactored
+
+- 调整目录结构，根目录存放图片、公共HTML、CSS和JS，所有子项目都放在works目录里
 
 ### 移除 Removed
 
