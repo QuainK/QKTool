@@ -1,68 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-
 <head>
-	<meta charset="utf-8">
-	<meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
-	<link href="css/lib/normalize.css" rel="stylesheet" type="text/css">
-	<link href="css/main.css" rel="stylesheet" type="text/css">
-	<link href="favicon.ico" rel="icon" type="image/x-icon">
-	<title>QKTool</title>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport">
+  <link href="css/lib/normalize.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+  <link href="/favicon.svg" rel="icon">
+  <title>QKTool</title>
 </head>
 
 <body>
-<script src="js/adjust_page_width.js"></script>
-
-<div class="header">
-	<h1>QKTool</h1>
-	<h4>版本号：1.2.0</h4>
+<div id="header">
+  <h1 id="brand">
+    <a href="/">QKTool</a>
+  </h1>
+  <div id="header-menu">
+    <a href="/">首页</a>
+    <a href="/log.html">更新日志</a>
+  </div>
 </div>
 
-<div class="content">
-	<ul class="list-wrap">
-		<li class="list-sublist">
-			<h2 class="list-classname">计算器</h2>
-			<ul>
-				<li class="list-item"><a href="works/calculators/BDHConverter.html">
-					<h3>进制转换器 BDHConverter</h3>
-				</a></li>
-			</ul>
-		</li>
-		<li class="list-sublist">
-			<h2 class="list-classname">小游戏</h2>
-			<ul>
-				<li class="list-item"><a href="works/games/GuessNumber.html">
-						<h3>猜数 GuessNumber</h3>
-					</a></li>
-			</ul>
-		</li>
-		<li class="list-sublist">
-			<h2 class="list-classname">其他</h2>
-			<ul>
-				<li class="list-item"><a href="works/search_collection/index.html">
-						<h3>搜索引擎整合 So</h3>
-					</a></li>
-				<li class="list-item"><a href="works/hyacinth/index.html">
-						<h3>风信子 Hyacinth</h3>
-					</a></li>
-			</ul>
-		</li>
-	</ul>
+<div id="main">
+  <div class="item">
+    <div class="item-img">
+      <a href="works/calculator/BDHConverter.html">
+        <img alt="常用进制转换器 BDHConverter" src="img/svg/calculator.svg">
+      </a>
+    </div>
+    <p>进制转换器</p>
+    <p>BDHConverter</p>
+  </div>
+  <div class="item">
+    <div class="item-img">
+      <a href="works/game/GuessNumber.html">
+        <img alt="猜数 GuessNumber" src="img/svg/game.svg">
+      </a>
+    </div>
+    <p>猜数</p>
+    <p>GuessNumber</p>
+  </div>
+  <div class="item">
+    <div class="item-img">
+      <a href="works/search_collection">
+        <img alt="搜索引擎整合 So" src="img/svg/search.svg">
+      </a>
+    </div>
+    <p>搜索引擎整合</p>
+    <p>So</p>
+  </div>
+  <div class="item">
+    <div class="item-img">
+      <a href="works/hyacinth">
+        <img alt="风信子 Hyacinth" src="img/svg/hyacinth.svg">
+      </a>
+    </div>
+    <p>风信子</p>
+    <p>Hyacinth</p>
+  </div>
 </div>
 
-<div class="footer">
-	<div class="footer-copyright"></div>
+<div id="footer">
+  <p>QKTool 2.0.0</p>
+  <p>&copy; 2019-2020 QuainK</p>
 </div>
-
-<script src="js/lib/jquery-1.8.3.min.js"></script>
-<script>
-	$(function () {
-		$(document).ready(function () {
-			$('.footer').load('./html/footer-copyright.html');
-		})
-	});
-</script>
-
 </body>
-
 </html>
